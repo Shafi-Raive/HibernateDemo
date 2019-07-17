@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.shafi.raive.mavendemo.test.subUserDaoTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 2.171 sec

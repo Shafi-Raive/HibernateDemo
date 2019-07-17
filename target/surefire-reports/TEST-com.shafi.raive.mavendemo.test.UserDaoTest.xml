@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="1" name="com.shafi.raive.mavendemo.test.UserDaoTest" time="4.585" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="com.shafi.raive.mavendemo.test.UserDaoTest" time="0.232" errors="2" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -61,11 +61,10 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.shafi.raive.mavendemo.test.UserDaoTest" name="testCreate" time="4.292"/>
-  <testcase classname="com.shafi.raive.mavendemo.test.UserDaoTest" name="testRetrieveAll" time="0.212">
-    <failure message="The test case is a prototype." type="java.lang.AssertionError">java.lang.AssertionError: The test case is a prototype.
-	at org.junit.Assert.fail(Assert.java:88)
-	at com.shafi.raive.mavendemo.test.UserDaoTest.testRetrieveAll(UserDaoTest.java:71)
+  <testcase classname="com.shafi.raive.mavendemo.test.UserDaoTest" name="testCreate" time="0.054"/>
+  <testcase classname="com.shafi.raive.mavendemo.test.UserDaoTest" name="testRetrieveAll" time="0.11">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at com.shafi.raive.mavendemo.test.UserDaoTest.testRetrieveAll(UserDaoTest.java:67)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -99,15 +98,14 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</failure>
+</error>
     <system-out>retrieve all User
 Hibernate: insert into User (email, name, id) values (?, ?, ?)
 Hibernate: insert into User (email, name, id) values (?, ?, ?)
-Hibernate: select user0_.id as id1_0_, user0_.email as email2_0_, user0_.name as name3_0_ from User user0_
 </system-out>
-    <system-err>Jul 18, 2019 12:39:45 AM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+    <system-err>Jul 18, 2019 2:01:39 AM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
 WARN: SQL Error: 1062, SQLState: 23000
-Jul 18, 2019 12:39:45 AM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
+Jul 18, 2019 2:01:39 AM org.hibernate.engine.jdbc.spi.SqlExceptionHelper logExceptions
 ERROR: Duplicate entry &apos;1234&apos; for key &apos;PRIMARY&apos;
 javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
 	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)
@@ -122,7 +120,7 @@ javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolat
 	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:39)
 	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:271)
 	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:104)
-	at com.shafi.raive.mavendemo.UserDao.create(UserDao.java:24)
+	at com.shafi.raive.mavendemo.crudMysqlDaoImple.create(crudMysqlDaoImple.java:23)
 	at com.shafi.raive.mavendemo.test.UserDaoTest.testRetrieveAll(UserDaoTest.java:64)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -183,7 +181,84 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry &a
 	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1027)
 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:175)
 	... 51 more
+java.lang.NullPointerException
+	at com.shafi.raive.mavendemo.crudMysqlDaoImple.retrieve(crudMysqlDaoImple.java:45)
+	at com.shafi.raive.mavendemo.test.UserDaoTest.testRetrieveAll(UserDaoTest.java:66)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </system-err>
   </testcase>
-  <testcase classname="com.shafi.raive.mavendemo.test.UserDaoTest" name="testRetrieveById" time="0.049"/>
+  <testcase classname="com.shafi.raive.mavendemo.test.UserDaoTest" name="testRetrieveById" time="0.066">
+    <error message="Not supported yet." type="java.lang.UnsupportedOperationException">java.lang.UnsupportedOperationException: Not supported yet.
+	at com.shafi.raive.mavendemo.crudMysqlDaoImple.retrieve(crudMysqlDaoImple.java:61)
+	at com.shafi.raive.mavendemo.test.UserDaoTest.testRetrieveById(UserDaoTest.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+</error>
+    <system-out>retrieve By id
+Hibernate: insert into User (email, name, id) values (?, ?, ?)
+</system-out>
+  </testcase>
 </testsuite>

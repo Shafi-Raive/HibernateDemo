@@ -11,5 +11,6 @@
 <property name="show_sql">true</property>
 <property name="hbm2ddl.auto">create-drop</property>
 <mapping class="com.shafi.raive.mavendemo.User" />
+<mapping class="com.shafi.raive.mavendemo.subUser" />
 </session-factory>
 </hibernate-configuration>

@@ -9,6 +9,6 @@ import org.hibernate.query.Query;
  *
  * @author shafi
  */
-public class UserDao extends crudMysqlDaoImple<User, Long> {
- 
+public class subUserDao  extends crudMysqlDaoImple<subUser, String>{
+
 }
